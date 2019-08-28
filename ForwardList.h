@@ -8,12 +8,15 @@ public:
 	ForwardList();
 	T& Front();
 	T& Back();
-	void Push_back();
-	void Push_front();
+	void Push_back(const T& element);
+	void Push_front(const T& element);
 	Node<T>* Pop_front();
 	Node<T>* Pop_back();
-	T& operator[](int a);
+	T& operator[](const int&);
 	bool Empty();
-	int size();
+	unsigned int size();
 	void clear();
+	ForwardList& sort();
+	ForwardList& reverse();
+	std::ostream& operator<< (const ForwardList&, std::ostream&);
 }
