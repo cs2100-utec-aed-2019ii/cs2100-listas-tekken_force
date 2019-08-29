@@ -7,6 +7,11 @@ ForwardList<T>::ForwardList(){
 }
 
 template<typename T>
+ForwardList<T>::ForwardList(const T& element){
+	head = new Node<T>(element);
+}
+
+template<typename T>
 T& ForwardList<T>::Front(){
 
 }
@@ -18,7 +23,12 @@ T& ForwardList<T>::Back(){
 
 template<typename T>
 void ForwardList<T>::Push_back(const T& element){
-
+	if(head == nullptr){
+		head = new Node<T>(element);
+	}
+	else{
+		head->next = new Node<T>(element);
+	}
 }
 
 template<typename T>
@@ -67,4 +77,7 @@ ForwardList& ForwardList<T>::reverse(){
 }
 
 template<typename T>
-std::ostream& ForwardList<T>::operator<<()
+std::ostream& ForwardList<T>::operator<<(const ForwardList& F, std::ostream& os){
+	os << "El valor de la cabeza es : " << *(F.head) << "\n";
+	return os;
+}

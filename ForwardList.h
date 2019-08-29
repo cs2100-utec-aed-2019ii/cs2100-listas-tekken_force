@@ -6,10 +6,11 @@ protected:
 	Node<T>* head;
 public:
 	ForwardList();
+	ForwardList(const T&)
 	T& Front();
 	T& Back();
-	void Push_back(const T& element);
-	void Push_front(const T& element);
+	void Push_back(const T&);
+	void Push_front(const T&);
 	Node<T>* Pop_front();
 	Node<T>* Pop_back();
 	T& operator[](const int&);
