@@ -19,5 +19,10 @@ public:
 	void clear();
 	ForwardList& sort();
 	ForwardList& reverse();
-	std::ostream& operator<< (const ForwardList&, std::ostream&);
-}
+
+	template<typename _T>
+    friend std::ostream& operator<< (std::ostream& os, const ForwardList<_T>& F){
+        os << "El valor del head es : " << *(F.head) << std::endl;
+        return os;
+    }
+};
