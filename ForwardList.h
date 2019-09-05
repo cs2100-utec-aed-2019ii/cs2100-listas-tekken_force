@@ -1,3 +1,6 @@
+#ifndef LINKED_LISTS_FORWARDLIST_H
+#define LINKED_LISTS_FORWARDLIST_H
+
 #include "Node.h"
 #include <iostream>
 
@@ -27,9 +30,14 @@ public:
         Node<T>* temp;
         temp = F.head;
         while(temp){
-            os << temp->get_value() << " ";
+            os << temp->get_value() << "->";
             temp = temp->Next;
         }
+
         return os;
     }
 };
+
+
+
+#endif

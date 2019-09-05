@@ -1,3 +1,6 @@
+#ifndef LINKED_LISTS_NODE_H
+#define LINKED_LISTS_NODE_H
+
 template<typename T>
 class Node{
 protected:
@@ -10,3 +13,6 @@ public:
     template <typename _T>
     friend class ForwardList;
 };
+
+
+#endif

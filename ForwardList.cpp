@@ -65,25 +65,25 @@ T ForwardList<T>::Pop_front(){
 
 template<typename T>
 T ForwardList<T>::Pop_back(){
- Node<T>* temp = this->head;
- T copia;
- if(temp->Next == nullptr){
-     copia = temp->value;
-     delete temp;
-     head = nullptr;
-     return copia;
- }
- else {
-     while (temp) {
-         if ((temp->Next)->Next == nullptr) {
-             copia = temp->Next->value;
-             delete temp->Next;
-             temp->Next = nullptr;
-             return copia;
-         }
-         temp = temp->Next;
-     }
- }
+    Node<T>* temp = this->head;
+    T copia;
+    if(temp->Next == nullptr){
+        copia = temp->value;
+        delete temp;
+        head = nullptr;
+        return copia;
+    }
+    else {
+        while (temp) {
+            if ((temp->Next)->Next == nullptr) {
+                copia = temp->Next->value;
+                delete temp->Next;
+                temp->Next = nullptr;
+                return copia;
+            }
+            temp = temp->Next;
+        }
+    }
 }
 template<typename T>
 T& ForwardList<T>::operator[](int v){
@@ -124,4 +124,3 @@ ForwardList<T>& ForwardList<T>::sort(){
 template<typename T>
 ForwardList<T>& ForwardList<T>::reverse() {
 }
-
