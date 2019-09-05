@@ -1,28 +1,35 @@
 #include "Node.h"
+#include <iostream>
 
 template <typename T>
 class ForwardList{
 protected:
-	Node<T>* head;
+    Node<T>* head;
 public:
-	ForwardList();
-	ForwardList(const T&)
-	T& Front();
-	T& Back();
-	void Push_back(const T&);
-	void Push_front(const T&);
-	Node<T>* Pop_front();
-	Node<T>* Pop_back();
-	T& operator[](const int&);
-	bool Empty();
-	unsigned int size();
-	void clear();
-	ForwardList& sort();
-	ForwardList& reverse();
+    ForwardList();
+    ForwardList(const T&);
+    T& Front();
+    T& Back();
+    void Push_back(const T&);
+    void Push_front(const T&);
+    T Pop_front();
+    T Pop_back();
+    bool Empty();
+    unsigned int size();
+    void clear();
+    ForwardList& sort();
+    ForwardList& reverse();
 
-	template<typename _T>
+    T& operator[](int v);
+
+    template <typename _T>
     friend std::ostream& operator<< (std::ostream& os, const ForwardList<_T>& F){
-        os << "El valor del head es : " << *(F.head) << std::endl;
+        Node<T>* temp;
+        temp = F.head;
+        while(temp){
+            os << temp->get_value() << " ";
+            temp = temp->Next;
+        }
         return os;
     }
 };

@@ -1,10 +1,12 @@
-
 template<typename T>
 class Node{
 protected:
-	T value;
-	Node* Next;
+    T value;
 public:
-	Node(T value);
-	Node(T value, Node* N);
-}
+    Node* Next;
+    Node(T value);
+    Node(T value, Node* N);
+    T get_value();
+    template <typename _T>
+    friend class ForwardList;
+};
