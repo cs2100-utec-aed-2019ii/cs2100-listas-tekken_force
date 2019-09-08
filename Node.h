@@ -1,10 +1,28 @@
+#ifndef JERARQUIA_LISTAS_NODE_H
+#define JERARQUIA_LISTAS_NODE_H
 
-template<typename T>
+template<class T>
 class Node{
 protected:
-	T value;
-	Node* Next;
+    T value;
 public:
-	Node(T value);
-	Node(T value, Node* N);
+    Node<T>* Next;
+    Node(T v);
+    T get_value();
+    ~Node();
+    template<class R>
+    friend class List;
+};
+
+template<class T>
+Node<T>::Node(T v){
+    this->value = v;
+    Next = nullptr;
 }
+
+template<class T>
+T Node<T>::get_value(){
+    return this->value;
+}
+
+#endif
