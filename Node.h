@@ -1,28 +1,31 @@
-#ifndef JERARQUIA_LISTAS_NODE_H
-#define JERARQUIA_LISTAS_NODE_H
-
 template<class T>
 class Node{
 protected:
-    T value;
+    T Value;
 public:
-    Node<T>* Next;
+    Node();
     Node(T v);
     T get_value();
-    ~Node();
     template<class R>
     friend class List;
+
+    template<class Y>
+    friend class ForwardList;
+
+    template<class U>
+    friend class CircularList;
 };
 
 template<class T>
+Node<T>::Node(){
+}
+
+template<class T>
 Node<T>::Node(T v){
-    this->value = v;
-    Next = nullptr;
+    this->Value = v;
 }
 
 template<class T>
 T Node<T>::get_value(){
-    return this->value;
+    return (this->value);
 }
-
-#endif

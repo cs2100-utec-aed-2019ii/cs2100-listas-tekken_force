@@ -1,6 +1,3 @@
-#ifndef JERARQUIA_LISTAS_DOUBLELISTNODE_H
-#define JERARQUIA_LISTAS_DOUBLELISTNODE_H
-
 #include "Node.h"
 
 template <class T>
@@ -15,6 +12,3 @@ template <class T>
 DoubleListNode<T>::DoubleListNode(T v) : Node<T>(v){
     this->Prev = nullptr;
 }
-
-
-#endif
