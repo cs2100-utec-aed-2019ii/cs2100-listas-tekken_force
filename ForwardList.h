@@ -1,5 +1,8 @@
+#ifndef JERARQUIA_LISTAS_FORWARDLIST_H
+#define JERARQUIA_LISTAS_FORWARDLIST_H
+
 #include "List.h"
-#include "ForwardNode.h"
+#include "Node.h"
 
 template<class T>
 class ForwardList : public List<T>{
@@ -127,3 +130,6 @@ template<class T>
 void reverse(){
 
 }
+
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef JERARQUIA_LISTAS_NODE_H
+#define JERARQUIA_LISTAS_NODE_H
+
 template<class T>
 class Node{
 protected:
@@ -29,3 +32,5 @@ template<class T>
 T Node<T>::get_value(){
     return (this->value);
 }
+
+#endif

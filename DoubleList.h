@@ -1,3 +1,5 @@
+#ifndef JERARQUIA_LISTAS_DOUBLELIST_H
+#define JERARQUIA_LISTAS_DOUBLELIST_H
 #include "List.h"
 #include "DoubleListNode.h"
 #include <ctime>
@@ -152,7 +154,25 @@ void DoubleList<T>::clear(){
 
 template<class T>
 void DoubleList<T>::erase(Node<T>* a){
-
+    DoubleListNode<T>* temp =DoubleList<T>::Head;
+    while(temp != nullptr){
+        if(temp == a){
+            if(temp->Prev != nullptr && temp->Next != nullptr) {
+                temp->Prev->Next = temp->Next;
+                delete temp;
+                break;
+            }
+            else if(temp->Prev == nullptr){
+                DoubleList<T>::Head = temp->Next;
+                delete temp;
+                break;
+            }
+            else if(temp->Next == nullptr){
+                DoubleList<T>::Tail = temp->Prev;
+            }
+        }
+        temp = temp->Next;
+    }
 }
 
 template<class T>
@@ -179,3 +199,4 @@ template<class T>
 T& DoubleList<T>::operator[](int a){
 
 }
+#endif

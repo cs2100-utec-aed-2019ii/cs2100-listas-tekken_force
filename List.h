@@ -1,3 +1,5 @@
+#ifndef JERARQUIA_LISTAS_LIST_H
+#define JERARQUIA_LISTAS_LIST_H
 #include <iostream>
 #include "Node.h"
 template<class T>
@@ -44,3 +46,7 @@ template<class T>
 List<T>::List(int f) {
 
 }
+
+
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef JERARQUIA_LISTAS_DOUBLECIRCULARLIST_H
+#define JERARQUIA_LISTAS_DOUBLECIRCULARLIST_H
+
 #include "List.h"
 #include "DoubleListNode.h"
 template<class T>
@@ -7,3 +10,6 @@ private:
 public:
     DoubleCircularList();
 };
+
+
+#endif

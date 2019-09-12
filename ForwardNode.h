@@ -1,4 +1,7 @@
+#ifndef JERARQUIA_LISTAS_FORWARDNODE_H
+#define JERARQUIA_LISTAS_FORWARDNODE_H
 #include "Node.h"
+
 template<class T>
 class ForwardNode : public Node<T>{
 public:
@@ -12,3 +15,4 @@ public:
     template<class U>
     friend class CircularList;
 };
+#endif //JERARQUIA_LISTAS_FORWARDNODE_H
