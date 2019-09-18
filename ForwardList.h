@@ -2,12 +2,15 @@
 #define ALGORITMOS_FORWARDLIST_H
 #include "ForwardNode.h"
 #include "List.h"
+#include "Iterator.h"
 #include <ctime>
 #include <vector>
 #include <algorithm>
 
 template <class T>
 class ForwardList : public List<T>{
+public:
+    typedef ForwardNode<T> node_t;
 public:
     ForwardNode<T>* Head;
     ForwardNode<T>* Tail;
@@ -56,6 +59,26 @@ public:
         list.drop(data);
         return list;
     }
+    
+    friend class ForwardIterator;
+    class ForwardIterator: public Iterator<node_t> {
+    public:
+        typedef typename Iterator<node_t>::node_t node_t;
+        typedef typename Iterator<node_t>::value_t value_t;
+
+    public:
+        ForwardIterator(node_t *pointer = nullptr)
+                : Iterator<node_t>(pointer) {
+        }
+
+        ~ForwardIterator(void) {
+        }
+
+        ForwardIterator &operator++(void) {
+            Iterator<node_t>::pointer = Iterator<node_t>::pointer->next;
+            return *this;
+        }
+    };
 };
 
 template <class T>
