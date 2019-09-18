@@ -2,6 +2,7 @@
 #define JERARQUIA_LISTAS_CIRCULARLIST_H
 
 #include "List.h"
+#include <time.h>      
 #include "ForwardNode.h"
 #include <ctime>
 template <class T>
@@ -31,7 +32,25 @@ public:
     List<T>& sort() override;
     List<T>& reverse() override;
     T& operator[](int) override;
+	template<typename __T>
+    friend std::ostream& operator<< (std::ostream& os , const CircularList<__T>& C){
+		ForwardNode<T> **pp = &C.head;
+			while ( (*pp)->Next = C.head ){
+			os << (**p)->get_value() << "-> " ; 
+			pp = &(*pp)->Next;
+			}
+		os <<(*pp)->get_value() << "->";
+        return os;
+
+		
+	}
+    template<typename __T>
+    friend List& operator<< (List<__T>&, const T& ) ;
+    template<typename __T>
+    friend List& operator>> (List<__T>&, const T& );
+
 };
+
 
 template<class T>
 CircularList<T>::CircularList() : List<T>(){
@@ -45,7 +64,7 @@ template<class T>
 CircularList<T>::CircularList(int n) : List<T>(n){
     srand(time(NULL));
     for (int i=0;i<n;i++){
-      CircularList::push_back( rand()%10 +1 );
+      CircularList::push_back( rand() % 10 +1 );
 	
 	}
 
@@ -71,7 +90,7 @@ template<class T>
 T& CircularList<T>::Back() {
 	
 	ForwardNode<T> **pp = &(head);
-	while(*pp != head) {
+	while((*pp)->next != head) {
 		pp = &(*pp)->next;
 	}
 	return (*pp)->Value ;
@@ -79,45 +98,83 @@ T& CircularList<T>::Back() {
 
 template<class T>
 void CircularList<T>::push_back(const T& a){
-	ForwardNode<T> **head1 = &(head);
-	ForwardNode<T> **pp = head1;
-	while(*pp != head ) {
+	ForwardNode<T> **pp = &head;
+	ForwardNode<T> *node = new ForwardNode<T>(a);
+	if ( !*pp ) {
+		*pp = node;
+		node->next = *pp ;
+		return ;  	
+	} 
+	while((*pp)->next != head ) {
 		pp=&(*pp)->next;	
 	}
+	node->next = head;
+	(*pp)->next = node;
+/*
+ 	//Aqui falla en (*tracer) , si la lista esta vacia
+	ForwardNode<T>**tracer = &head;
 	ForwardNode<T> *node = new ForwardNode<T>(a);
-	node->next = *pp;
-	*pp = node;
-	
+	std::cout<<"1"<<std::endl ;
+	while ( (*tracer) && (*tracer)->next != head){ 
+		tracer = &(*tracer)->next;
+	}
+	node->next = head;
+	(*tracer)->next= node;
+*/		
 }
 
 template<class T>
 void CircularList<T>::push_front(const T& a){
-    ForwardNode<T>**pp = &head ;
-
-	while(*pp != head ) {
+	ForwardNode<T> **pp = &head;
+	ForwardNode<T> *node = new ForwardNode<T>(a);
+	if ( !*pp ) {
+		*pp = node;
+		node->next = *pp ;
+		return ;  	
+	} 
+	while((*pp)->next != head ) {
 		pp=&(*pp)->next;	
 	}
-   	ForwardNode<T> * node = new ForwardNode<T>(a);
-	*pp = node;
+	(*pp)->next =node;	
 	node->next = head;
-	head = node; 
+	head = node;
 }
 
 template<class T>
-Node<T>* CircularList<T>::pop_back(){}
+Node<T>* CircularList<T>::pop_back(){
+	ForwardNode<T> **pp = &head;
+	while((*pp)->next != head ) {
+		pp=&(*pp)->next;	
+	}
+	ForwardNode<T> * node = (*pp); 
+	(*pp) = head;
+	return 	node;
+}
 
 template<class T>
-Node<T>* CircularList<T>::pop_front(){}
+Node<T>* CircularList<T>::pop_front(){
+	ForwardNode<T> **pp = &head;
+	while((*pp)->next != head ) {
+		pp=&(*pp)->next;	
+	
+	ForwardNode<T> * node = head;
+	head = head->next;
+	(*pp)->next = head;
+	return node;	 
+	}
+}
 
 template<class T>
-bool CircularList<T>::empty(){}
+bool CircularList<T>::empty(){
+	return (head == nullptr) ; 
+}
 
 template<class T>
 unsigned int CircularList<T>::size(){
 	if (head ==nullptr) return 0;
 	ForwardNode<T> ** pp = &head;
 	int cant = 1;
-	while (*pp !=head){
+	while ((*pp)->next !=head){
 		pp = &(*pp)->next;
 		cant++;
 	}
@@ -144,5 +201,13 @@ List<T>& CircularList<T>::reverse(){}
 
 
 template<class T>
-T& CircularList<T>::operator[](int){} 
+T& CircularList<T>::operator[](int index){
+	ForwardNode<T> **pp = &head;
+	while(index ) {
+		pp=&(*pp)->next;	
+		index--; 
+	}
+	return (*pp)->Value;	
+} 
+
 #endif
