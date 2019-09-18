@@ -4,6 +4,8 @@
 template<class T>
 class ForwardNode : public Node<T>{
 public:
+    typedef typename Node<T>::value_t value_t;
+public:
     ForwardNode<T>* Next;
     ForwardNode(T v);
     template<class R>
