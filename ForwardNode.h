@@ -1,7 +1,3 @@
-//
-// Created by DARIO on 14/09/2019.
-//
-
 #ifndef ALGORITMOS_FORWARDNODE_H
 #define ALGORITMOS_FORWARDNODE_H
 #include "Node.h"

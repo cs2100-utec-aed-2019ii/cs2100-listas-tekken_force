@@ -59,7 +59,7 @@ public:
         list.drop(data);
         return list;
     }
-
+    
     friend class ForwardIterator;
     class ForwardIterator: public Iterator<node_t> {
     public:
@@ -78,26 +78,7 @@ public:
             Iterator<node_t>::pointer = Iterator<node_t>::pointer->next;
             return *this;
         }
-        //++void == !=
-        bool operator==(Iterator<node_t>& copy) {
-            if(Iterator<node_t>::pointer == copy.pointer) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-        bool operator!=(Iterator<node_t>& copy) {
-            if(Iterator<node_t>::pointer == copy.pointer) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
     };
-
 };
 
 template <class T>
